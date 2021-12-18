@@ -12,8 +12,46 @@
 }
 
 /* Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) { 
+@media (min-width: 576px) {
     .ngxmasonryitem{
-        position: initial !important; 
+        position: initial !important;
     }
 }
+
+.main {
+    /* Same as the width of the sidenav */
+    /* margin-left: 100px; */
+    /* Mismo del toolbar */
+    margin-top: 62px;
+}
+
+
+
+/* filtro */
+
+.dropdown-menu {
+    min-width: 20rem !important;
+}
+
+
+.dropdown-item-custom {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0px;
+}
+
+
+.dropdown-menu{
+    padding: 0px;
+    border: 0px;
+}
+
+

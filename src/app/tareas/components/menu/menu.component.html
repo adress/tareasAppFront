@@ -2,9 +2,18 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
     </button>
-    <span>Consultar Tareas</span>
+    <span>.</span>
 
-    <span class="example-spacer"></span>
+    <span class="custom-spacer"></span>
+
+    <div class="input-group" style="max-width: 50%;">
+        <input type="text" class="form-control" placeholder="Buscar...">
+        <button type="button" class="btn bg-transparent" style="margin-left: -40px; z-index: 100;">
+          <i class="fa fa-times"></i>
+        </button>
+    </div>
+
+    <span class="custom-spacer"></span>
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
         <mat-icon>favorite</mat-icon>
     </button>
@@ -13,9 +22,7 @@
     </button>
 </mat-toolbar>
 
-<div class="sidenav">
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
-</div>
+<!-- <div class="sidenav">
+    <a href="#">Todas</a>
+    <a href="#">Mis Tareas</a>
+</div> -->

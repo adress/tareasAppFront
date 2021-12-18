@@ -7,11 +7,13 @@ import { MaterialModule } from '../material/material.module';
 
 import { TareasRoutingModule } from './tareas-routing.module';
 import { NgxMasonryModule } from 'ngx-masonry';
+import { MenuComponent } from './components/menu/menu.component';
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    MenuComponent,
   ],
   imports: [
     CommonModule,

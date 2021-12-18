@@ -11,6 +11,8 @@ export class HomeComponent implements OnInit {
 
   tareas: Tarea[] = [];
 
+  panelOpenState: boolean = true;
+
   constructor(private tareaService: TareasService) { }
 
   ngOnInit(): void {
