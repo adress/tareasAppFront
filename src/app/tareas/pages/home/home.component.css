@@ -1,0 +1,19 @@
+.tachado {
+    text-decoration: line-through;
+}
+
+.boton-flotante{
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:40px;
+    text-align:center;
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) { 
+    .ngxmasonryitem{
+        position: initial !important; 
+    }
+}

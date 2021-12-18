@@ -1,0 +1,57 @@
+<div class="container py-2">
+
+
+    <div class="row">
+        <mat-form-field style="margin: auto; max-width: 50%;" appearance="fill">
+            <input matInput type="text">
+            <mat-label>Buscar Tarea</mat-label>
+            <button matSuffix mat-icon-button aria-label="Clear">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col-6">
+            <mat-form-field appearance="fill">
+                <mat-label>Choose an option</mat-label>
+                <mat-select>
+                    <mat-option value="option1">Option 1</mat-option>
+                    <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+                    <mat-option value="option3">Option 3</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+
+
+    <ngx-masonry class="row small-gutters">
+        <div ngxMasonryItem *ngFor="let tarea of tareas" class="py-0 grid-five col-lg-3 col-md-4 col-sm-12 col-12 my-2">
+            <div class="card border-primary">
+                <div class="card-body">
+                    <div class="card-title">
+                        <mat-checkbox [checked]="tarea.finalizada" (change)="nuevoEstado($event.checked, tarea)">
+                        </mat-checkbox>
+                        <h3 [ngClass]="{'tachado' : tarea.finalizada}" style="display: inline-block; margin-left: 1em;">
+                            {{ tarea.titulo | titlecase }}</h3>
+                    </div>
+
+                    <p class="card-text">{{ tarea.descripcion }}</p>
+                    <!-- <a href="#" class="btn btn-outline-secondary">Outline</a> -->
+                </div>
+            </div>
+        </div>
+    </ngx-masonry>
+
+    <div class="boton-flotante">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+
+</div>
