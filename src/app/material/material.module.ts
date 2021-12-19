@@ -7,20 +7,23 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 
 
-//import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 // import { MatCardModule } from '@angular/material/card';
 // import { MatAutocompleteModule } from '@angular/material/autocomplete';
-// import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 // import { MatGridListModule } from '@angular/material/grid-list';
-// import { MatInputModule } from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 // import { MatListModule } from '@angular/material/list';
 // import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // import { MatSelectModule } from '@angular/material/select';
 // import { MatSidenavModule } from '@angular/material/sidenav';
 // import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+
 
 @NgModule({
   exports: [
@@ -31,7 +34,12 @@ import {MatRadioModule} from '@angular/material/radio';
     //MatExpansionModule,
     MatIconModule,
     MatToolbarModule,
-    //MatSlideToggleModule
-  ],
+    MatSlideToggleModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ], providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'es-CO' }
+  ]
 })
 export class MaterialModule { }

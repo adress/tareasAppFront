@@ -9,15 +9,22 @@ import { TareasRoutingModule } from './tareas-routing.module';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { MenuComponent } from './components/menu/menu.component';
 
+import { TareasComponent } from './pages/tareas/tareas.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TareasFormComponent } from './components/tareas-form/tareas-form.component';
+
 
 @NgModule({
   declarations: [
     HomeComponent,
     MenuComponent,
+    TareasComponent,
+    TareasFormComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
+    ReactiveFormsModule,
     NgxMasonryModule,
     TareasRoutingModule
   ]
