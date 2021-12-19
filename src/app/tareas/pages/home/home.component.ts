@@ -44,8 +44,6 @@ export class HomeComponent implements OnInit {
   }
 
   abrirDialogGuardar(tareaId: string) {
-    // console.log(window.innerWidth);
-    console.log('la tarea es ', tareaId);
 
     const dialog = this.matDialog.open(DialogComponent, {
       width: '60%',
@@ -61,10 +59,13 @@ export class HomeComponent implements OnInit {
         }
 
         if (formEvent.accion == Accion.Actualizar) {
-          //TODO: implementar accion de actualziar
           const index = this.tareas.map((tarea) => tarea.id).indexOf(formEvent.tarea?.id);
-          console.log('la tarea a actualziar es'+ index);
-          this.tareas[index] = formEvent.tarea!;
+          this.tareas[index].id = formEvent.tarea!.id;
+          this.tareas[index].titulo = formEvent.tarea?.titulo;
+          this.tareas[index].descripcion = formEvent.tarea!.descripcion;
+          this.tareas[index].finalizada = formEvent.tarea!.finalizada;
+          this.tareas[index].fechaCreacion = formEvent.tarea!.fechaCreacion;
+          this.tareas[index].fechaVencimiento = formEvent.tarea!.fechaVencimiento;
         }
 
         if (formEvent.accion == Accion.Borrar) {

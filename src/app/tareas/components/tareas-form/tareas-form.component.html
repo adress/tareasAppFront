@@ -10,7 +10,8 @@
         </div>
         <div class="mb-2 form-group">
             <label>Título</label>
-            <input [ngClass]="{'tachado' : miFormulario.controls['finalizada'].value}" formControlName="titulo" type="text" class="form-control">
+            <input [ngClass]="{'tachado' : miFormulario.controls['finalizada'].value}" formControlName="titulo"
+                type="text" class="form-control">
         </div>
 
         <div class="mb-2 form-group">
@@ -25,13 +26,17 @@
             </fieldset>
         </div>
 
+        <!-- <div class="col-md-6">
+            <label class="form-label">Fecha de Vencimiento</label>
+            <input formControlName="fechaVencimiento" class="form-control" type="date">
+        </div>  -->
+
         <div class="col-md-6">
             <label class="form-label">Fecha de Vencimiento</label>
             <div class="mb-2 input-group">
                 <input formControlName="fechaVencimiento" class="form-control" [matDatepicker]="picker">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-                <!-- <span class="input-group-text"></span> -->
             </div>
         </div>
 

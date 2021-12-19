@@ -54,16 +54,15 @@ export class TareasFormComponent implements OnInit {
     if (this.tarea.id) {
       this.tareasService.actualizarTarea(this.tarea).subscribe(
         (tarea) => {
-          console.log('tarea actaulizada', tarea);
-          console.log('fecha vencimiento', tarea.fechaVencimiento);
-          this.formEvent.emit({ accion: Accion.Actualizar, tarea });
+          tarea.fechaVencimiento = this.tarea.fechaVencimiento;
+          this.formEvent.emit({ accion: Accion.Actualizar, tarea: tarea });
         }
       );
     } else {
       this.tareasService.agregarTarea(this.tarea).subscribe(
         (tarea) => {
-          console.log('tarea guardada', tarea);
-          this.formEvent.emit({ accion: Accion.Crear, tarea });
+          tarea.fechaVencimiento = this.tarea.fechaVencimiento;
+          this.formEvent.emit({ accion: Accion.Crear, tarea: tarea });
         }
       );
     }
@@ -73,7 +72,6 @@ export class TareasFormComponent implements OnInit {
     if (this.tarea.id) {
       this.tareasService.borrarTarea(this.tarea.id).subscribe(
         () => {
-          console.log('tarea borrada', this.tarea.id);
           this.formEvent.emit({ accion: Accion.Borrar, tareaId: this.tarea.id });
         }
       );

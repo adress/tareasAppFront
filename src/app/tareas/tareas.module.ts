@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { CommonModule, registerLocaleData } from '@angular/common';
 
 
 import { HomeComponent } from './pages/home/home.component';
@@ -29,6 +29,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     ReactiveFormsModule,
     NgxMasonryModule,
     TareasRoutingModule
-  ]
+  ],
+  providers: []
 })
 export class TareasModule { }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -22,8 +22,9 @@ import { MatInputModule } from '@angular/material/input';
 // import { MatSidenavModule } from '@angular/material/sidenav';
 // import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
-
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { registerLocaleData } from '@angular/common';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   exports: [
@@ -37,7 +38,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
     MatSlideToggleModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatMomentDateModule,
   ], providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'es-CO' }
   ]

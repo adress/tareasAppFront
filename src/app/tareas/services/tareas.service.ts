@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Tarea } from '../interfaces/tarea.interface';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
