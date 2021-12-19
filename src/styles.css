@@ -12,3 +12,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .custom-spacer {
     flex: 1 1 auto;
 }
+
+.tachado {
+    text-decoration: line-through;
+}
+
+.custom-dialog-container .mat-dialog-container {
+    padding: 1px !important;
+    overflow: hidden;
+}
+

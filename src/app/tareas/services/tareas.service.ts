@@ -18,7 +18,7 @@ export class TareasService {
 
   constructor(private http: HttpClient) { }
 
-  private _baseUrl: string = 'http://192.168.1.7:8000';
+  private _baseUrl: string = 'http://127.0.0.1:8000';
 
   getTareas(): Observable<Tarea[]> {
     return this.http.get<Tarea[]>(`${this._baseUrl}/tareas/consultar`);
@@ -38,7 +38,7 @@ export class TareasService {
   }
 
   borrarTarea(id: string) {
-    return this.http.delete(`${this._baseUrl}/tareas/borar/${id}`)
+    return this.http.delete(`${this._baseUrl}/tareas/borrar/${id}`)
   };
 
 }

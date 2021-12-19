@@ -1,6 +1,3 @@
-.tachado {
-    text-decoration: line-through;
-}
 
 .boton-flotante{
     position:fixed;
@@ -25,14 +22,10 @@
     margin-top: 62px;
 }
 
-
-
 /* filtro */
-
 .dropdown-menu {
     min-width: 20rem !important;
 }
-
 
 .dropdown-item-custom {
     display: block;
@@ -48,10 +41,7 @@
     border: 0px;
 }
 
-
 .dropdown-menu{
     padding: 0px;
     border: 0px;
 }
-
-

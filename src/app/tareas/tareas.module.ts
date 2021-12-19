@@ -12,6 +12,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { TareasComponent } from './pages/tareas/tareas.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TareasFormComponent } from './components/tareas-form/tareas-form.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { TareasFormComponent } from './components/tareas-form/tareas-form.compon
     MenuComponent,
     TareasComponent,
     TareasFormComponent,
+    DialogComponent,
   ],
   imports: [
     CommonModule,

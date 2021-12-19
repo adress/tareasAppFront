@@ -121,9 +121,10 @@
             <div ngxMasonryItem *ngFor="let tarea of tareas"
                 class="py-0 grid-five col-lg-3 col-md-4 col-sm-12 col-12 my-2">
                 <div class="card border-primary">
-                    <div class="card-body">
+                    <div class="card-body" (click)="abrirDialogGuardar(tarea.id!)">
                         <div class="card-title">
-                            <mat-checkbox [checked]="tarea.finalizada" (change)="nuevoEstado($event.checked, tarea)">
+                            <mat-checkbox (click)="$event.stopPropagation()" [checked]="tarea.finalizada"
+                                (change)="nuevoEstado($event.checked, tarea)">
                             </mat-checkbox>
                             <h3 [ngClass]="{'tachado' : tarea.finalizada}"
                                 style="display: inline-block; margin-left: 1em;">
@@ -138,8 +139,13 @@
         </ngx-masonry>
 
 
+
+        <code>
+            {{tareas | json}}
+        </code>
+
         <div class="boton-flotante">
-            <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+            <button mat-fab color="primary" (click)="abrirDialogGuardar('')">
                 <mat-icon>add</mat-icon>
             </button>
         </div>
