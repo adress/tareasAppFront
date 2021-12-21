@@ -1,3 +1,11 @@
+export interface TareaResponse {
+    mensaje?: string;
+    ok: boolean;
+    tarea: Tarea;
+}
+
+
+
 export interface Tarea {
     id?: string;
     titulo?: string;
