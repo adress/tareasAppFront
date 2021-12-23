@@ -6,7 +6,7 @@ Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-
 Tener instaldo npm
 
 ### Reconstruir la aplicación
-para reconstroir la aplicación ejecute `npm i` en la raiz del proyecto
+Para reconstruir la aplicación ejecute `npm i` en la raíz del proyecto
 
 ### Levantar el servidor
 
