@@ -80,8 +80,10 @@ export class HomeComponent implements OnInit {
   }
 
   abrirDialogGuardar(tareaId: string) {
+    const width = window.innerWidth >= 520 ? '60%' : '90%';
     const dialog = this.matDialog.open(DialogComponent, {
-      width: '60%',
+      //width: '60%',
+      width,
       panelClass: 'custom-dialog-container',
       data: tareaId
     });
