@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Usuario, AuthResponse, Payload } from '../interfaces/interfaces';
-import { environment } from '../../../environments/environment.prod';
-import { catchError, map, of, tap, Observable, throwError, empty } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { map, of, Observable } from 'rxjs';
 import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
@@ -10,8 +10,7 @@ import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http
 export class AuthService {
   constructor(private http: HttpClient) { }
 
-  //private _baseUrl: string = environment.baseUrl;
-  private _baseUrl: string = 'http://127.0.0.1:8000';
+  private _baseUrl: string = environment.baseUrl;
   private _usuario!: Usuario;
   private _token!: string;
 
@@ -36,7 +35,7 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
-    const credenciales = btoa('angularApp' + ':' + '12345');
+    const credenciales = btoa('tareasApp' + ':' + 'tareasApp123*');
 
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -49,27 +48,10 @@ export class AuthService {
     params.set('password', password);
 
     return this.http.post<AuthResponse>(`${this._baseUrl}/oauth/token`, params.toString(), { headers: httpHeaders }).pipe(
-
       map((resp) => {
-        //almecena la informacion del usuario y ek token  
         this.guardarUsuarioToken(resp);
         return true;
-      }),
-
-      catchError((e: HttpErrorResponse) => {
-        if (e.status == 401) {
-          console.log('Error: tienes que estar autenticado', e);
-          //this.router.navigate(['/login']);
-        }
-
-        if (e.status == 403) {
-          console.log('Error: o tienes permisos para realizar esta accion', e);
-          //swal('Acceso denegado', `Hola ${this.authService.usuario.username} no tienes acceso a este recurso!`, 'warning');
-          //this.router.navigate(['/tareas']);
-        }
-        return of(false);
       })
-
     );
   }
 
@@ -99,6 +81,9 @@ export class AuthService {
   }
 
   logout() {
+    this._usuario = { uid: '', username: '' };
+    this._token = '';
     localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
   }
 }

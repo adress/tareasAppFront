@@ -1,40 +1,15 @@
-.sidenav {
-    height: 100%;
-    width: 100px;
-    position: fixed;
-    z-index: 1;
-    top: 64px;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
-
-.sidenav a {
-    padding: 6px 6px 6px 32px;
-    text-decoration: none;
-    font-size: 1em;
-    color: #818181;
-    display: block;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-    .sidenav a {
-        font-size: 18px;
+@media (max-width: 575px) {
+    .contenedor-barra{
+        max-width: 90% !important;
     }
 }
 
-@media (max-width: 599px){
-    .sidenav {
-        top: 56px;
-    }
+#barraBusqueda{
+    max-width: 100%;
+}
+
+.contenedor-barra{
+    max-width: 50%;
 }
 
 /*Tool bar*/
@@ -42,4 +17,9 @@
     position: fixed !important;
     top: 0px;
     z-index: 1;
+}
+
+.btn-logout:hover {
+    background-color: initial;
+    color: initial;
 }

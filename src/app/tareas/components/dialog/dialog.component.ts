@@ -22,4 +22,9 @@ export class DialogComponent implements OnInit {
     this.dialogRef.close(formEvent);
   }
 
+
+  cerrar() {
+    this.dialogRef.close();
+  }
+
 }

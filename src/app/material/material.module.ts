@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,7 +30,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 @NgModule({
   exports: [
     MatButtonModule,
-    MatCheckboxModule,
+    //MatCheckboxModule,
     MatDividerModule,
     //MatRadioModule,
     //MatExpansionModule,
@@ -39,6 +40,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     MatDialogModule,
     MatDatepickerModule,
     MatMomentDateModule,
+    MatChipsModule
   ], providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'es-CO' }
   ]

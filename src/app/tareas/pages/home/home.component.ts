@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TareasService } from '../../services/tareas.service';
-import { Tarea, FormEvent, Accion } from '../../interfaces/tarea.interface';
+import { Tarea, FormEvent, Accion, Filtro, usuario } from '../../interfaces/tarea.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../components/dialog/dialog.component';
-
 
 @Component({
   selector: 'app-home',
@@ -14,11 +13,16 @@ export class HomeComponent implements OnInit {
 
   tareas: Tarea[] = [];
 
+  filtro: Filtro = {
+    finalizada: ''
+  }
+
   tareaSelecionada: Tarea = {
     descripcion: '',
     fechaCreacion: '',
     finalizada: false,
-    fechaVencimiento: ''
+    fechaVencimiento: '',
+    usuario: { id: '', username: '' }
   }
 
   panelOpenState: boolean = true;
@@ -27,24 +31,55 @@ export class HomeComponent implements OnInit {
     private matDialog: MatDialog) { }
 
   ngOnInit(): void {
+    document.body.classList.remove('imagen-fondo-login');
+    this.actualizarTareas();
+  }
+
+  actualizarTareas() {
     this.tareaService.getTareas().subscribe(
       (tareas) => {
         this.tareas = tareas;
       }
-    )
-
-    //this.abrirDialogGuardar();
+    );
   }
 
-  nuevoEstado(check: boolean, tarea: Tarea) {
-    tarea.finalizada = check;
-    this.tareaService.actualizarTarea(tarea).subscribe(
-      (nuevaTarea) => tarea = nuevaTarea
+  actualizarTareasParams() {
+    this.tareaService.getTareasParams(this.filtro).subscribe(
+      (tareas) => {
+        this.tareas = tareas;
+      }
+    );
+  }
+
+
+  playAudio() {
+    let audio = new Audio();
+    audio.src = "../../../assets/notificacion.mp3";
+    audio.load();
+    audio.play();
+  }
+
+  nuevoEstado(tarea: Tarea) {
+    const nuevaTarea = { ...tarea };
+    nuevaTarea.finalizada = !tarea.finalizada;
+    this.tareaService.actualizarTarea(nuevaTarea).subscribe(
+      (resp) => {
+        const tareaResponse = resp.tarea;
+        if (this.filtro.finalizada == 'si' && !tareaResponse.finalizada) {
+          this.tareas = this.tareas.filter((tareaFiltro) => tareaFiltro.id != tareaResponse.id);
+        } else if (this.filtro.finalizada == 'no' && tareaResponse.finalizada) {
+          this.tareas = this.tareas.filter((tareaFiltro) => tareaFiltro.id != tareaResponse.id);
+        } else {
+          tarea.finalizada = tareaResponse.finalizada
+        }
+        if (tareaResponse.finalizada) {
+          this.playAudio();
+        }
+      }
     );
   }
 
   abrirDialogGuardar(tareaId: string) {
-
     const dialog = this.matDialog.open(DialogComponent, {
       width: '60%',
       panelClass: 'custom-dialog-container',
@@ -54,28 +89,35 @@ export class HomeComponent implements OnInit {
     dialog.afterClosed().subscribe((formEvent: FormEvent) => {
       if (formEvent) {
 
-        if (formEvent.accion == Accion.Crear) {
-          this.tareas.push(formEvent.tarea!);
-        }
-
-        if (formEvent.accion == Accion.Actualizar) {
-          const index = this.tareas.map((tarea) => tarea.id).indexOf(formEvent.tarea?.id);
-          this.tareas[index].id = formEvent.tarea!.id;
-          this.tareas[index].titulo = formEvent.tarea?.titulo;
-          this.tareas[index].descripcion = formEvent.tarea!.descripcion;
-          this.tareas[index].finalizada = formEvent.tarea!.finalizada;
-          this.tareas[index].fechaCreacion = formEvent.tarea!.fechaCreacion;
-          this.tareas[index].fechaVencimiento = formEvent.tarea!.fechaVencimiento;
-        }
-
         if (formEvent.accion == Accion.Borrar) {
           this.tareas = this.tareas.filter((tarea) => tarea.id != formEvent.tareaId);
+        } else {
+          this.actualizarTareasParams();
         }
       }
     });
   }
 
+  cambiarOrden(orden: string) {
+    this.filtro.orden = orden;
+    this.actualizarTareasParams();
+  }
 
+  cambiarEstado(finalizada: string) {
+    this.filtro.finalizada = finalizada;
+    console.log(this.filtro);
+    this.actualizarTareasParams();
+  }
 
+  cambiarUsuario(event: Event) {
+    const isChecked = (event.target as HTMLInputElement).checked;
+    const value = isChecked ? 'me' : '';
+    this.filtro.usuario = value;
+    this.actualizarTareasParams();
+  }
 
+  cambiarBusqueda(busqueda: string) {
+    this.filtro.busqueda = busqueda;
+    this.actualizarTareasParams();
+  }
 }
